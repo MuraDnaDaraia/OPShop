@@ -1,0 +1,32 @@
+.productdiv {
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none !important;
+    padding: 4px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+
+
+    img {
+        width: 300px;
+        height: 300px;
+    }
+}
+a{
+    &:hover {
+        color: #ffffff !important;
+        transform: scale(1.05);
+    }
+}
+
+.largeproductdiv {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    }
