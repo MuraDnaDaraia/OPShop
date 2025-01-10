@@ -1,0 +1,98 @@
+$primary-color: #FFD700;
+$background-dark: #000000;
+$text-light: #000000;
+$text-muted: #cccccc;
+$border-radius: 20px;
+
+.Card {
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: $primary-color;
+      border-radius: 50%;
+      opacity: 0.3;
+      z-index: 0;
+    }
+  
+    .Price {
+      background: $primary-color;
+      color: $text-light;
+      padding: 5px 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: bold;
+      z-index: 1;
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  
+    img {
+        margin-top: 50px !important;
+      width: 175px;
+      height: 175px;
+    
+      display: block;
+      margin: 0 auto 20px;
+      z-index: 1;
+      position: relative;
+    }
+  
+    h3 {
+      font-size: 20px;
+      margin: 0;
+      text-align: center;
+    }
+  
+    p {
+      color: $text-muted;
+      font-size: 14px;
+      text-align: center;
+      margin: 10px 0 20px;
+    }
+  
+    .more-info {
+      display: block;
+      background: $primary-color;
+      color: $text-light;
+      text-align: center;
+      padding: 10px;
+      border-radius: $border-radius;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      z-index: 1;
+  
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .Card {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 20px;
+    width: 350px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+  }
