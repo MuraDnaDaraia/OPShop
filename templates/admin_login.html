@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container container Login h-50">
+    <h2 class="mb-2 text-center">Admin Login</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.nickname.label(class="form-label") }}
+            {{ form.nickname(class="form-control") }}
+        </div>
+        <div class="form-group mt-1">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-4">
+            {{ form.submit.label }}
+        </button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }} mt-3">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

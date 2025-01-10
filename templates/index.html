@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}NVIDIA GeForce RTX 50 Series - My Product Store{% endblock %}
+{% block content %}
+
+{% if not current_user.is_authenticated %}
+    <h1 class="text-center text-warning">You are Not Logged in. If you want to view products in higher detail, you should Log in (or Register).</h1>
+    <div class="text-center">
+        <a href="/login" class="btn btn-primary text-decoration-none">Login</a>
+        <a href="/register" class="btn btn-secondary text-decoration-none">Register</a>
+    </div>
+{% endif %}
+
+<h2 class="text-center p-5 text-warning">
+    This Website is in Beta Version. Not all features may work perfectly, but the developer is actively working to bring more features. Explore PC Hardware and Builds below!
+</h2>
+
+<div class="container my-5 border border-dark rounded p-4">
+    <h1 class="text-center text-warning mb-4">NVIDIA Unveils Game-Changing GeForce RTX 50 Series</h1>
+    <p class="text-center text-muted">Powered by Blackwell Architecture</p>
+
+    <p class="Article text-white"><strong>CES, January 6, 2025</strong> — NVIDIA has officially launched its next-generation GeForce RTX™ 50 Series GPUs for desktops and laptops, ushering in a new era of AI-driven computer graphics. Built on the cutting-edge Blackwell architecture, these GPUs promise unparalleled performance, stunning visual realism, and groundbreaking AI-powered features.</p>
+
+    <h3 class="mt-4 text-warning">A Leap in Graphics Innovation</h3>
+    <p class="Article text-white">The flagship <strong>GeForce RTX 5090</strong> boasts <strong>92 billion transistors</strong> and delivers over <strong>3,352 trillion AI operations per second (TOPS)</strong>. It outperforms the GeForce RTX 4090 by up to <strong>2x</strong> thanks to innovations like <strong>DLSS 4</strong>, neural shaders, and next-gen RT Cores.</p>
+    <p class="Article text-white">For gamers looking for value, the <strong>GeForce RTX 5070</strong> offers nearly <strong>similar performance to the RTX 4090</strong> but costs less than <strong>half the price</strong> at just <strong>$549</strong>, compared to the RTX 4090’s $1,599 price tag.</p>
+
+    <h3 class="mt-4 text-warning">DLSS 4: AI-Powered Performance Boost</h3>
+    <p class="Article text-white">The new <strong>DLSS 4</strong> brings <strong>Multi Frame Generation</strong>, using AI to generate up to three frames for every traditionally rendered frame. This boosts performance by up to <strong>8x</strong>, while ensuring responsiveness with <strong>NVIDIA Reflex 2</strong>. Reflex 2 introduces <strong>Frame Warp</strong>, reducing latency by up to <strong>75%</strong> for competitive gaming.</p>
+    <p class="Article text-white">DLSS 4 also debuts the <strong>transformer model architecture</strong>, delivering greater stability, reduced ghosting, and higher detail, with support for over <strong>75 games and applications</strong> at launch.</p>
+
+    <h3 class="mt-4 text-warning">Blackwell’s AI Revolution: Neural Shaders and Realistic Characters</h3>
+    <p class="Article text-white">NVIDIA introduces <strong>RTX Neural Shaders</strong>, which use small AI networks to deliver film-quality materials and lighting in real-time games.</p>
+    <p class="Article text-white">Rendering lifelike characters gets a massive upgrade with <strong>RTX Neural Faces</strong>, enabling real-time generation of ultra-realistic digital faces. Coupled with <strong>ray-traced hair and skin</strong>, and <strong>RTX Mega Geometry</strong>, which enables <strong>100x more ray-traced triangles</strong>, games will achieve unprecedented realism.</p>
+
+    <h3 class="mt-4 text-warning">Autonomous Game Characters with NVIDIA ACE</h3>
+    <p class="Article text-white">Blackwell GPUs bring <strong>autonomous game characters</strong> to life using <strong>NVIDIA ACE</strong> technologies. These AI-driven characters adapt to player behavior, plan strategies, and act like real humans.</p>
+    <ul>
+        <li class="text-white">In <strong>PUBG: BATTLEGROUNDS</strong>, ACE-powered companions dynamically assist human players.</li>
+        <li class="text-white">In <strong>InZOI</strong>, characters autonomously adjust their behavior based on in-game events and goals.</li>
+        <li class="text-white">In <strong>MIR5</strong>, AI-powered raid bosses adapt tactics to challenge players dynamically.</li>
+    </ul>
+
+    <h3 class="mt-4 text-warning">AI Tools for Creators and Developers</h3>
+    <p class="Article text-white">The RTX 50 Series empowers creators with <strong>FP4 precision</strong>, doubling AI image generation performance for tools like FLUX and enabling local generative AI models to run more efficiently.</p>
+    <p class="Article text-white">NVIDIA also introduces <strong>NIM microservices</strong> for developers, enabling AI-powered assistants and agents on RTX PCs. For creators, the <strong>NVIDIA Broadcast</strong> app gains new AI tools like Studio Voice for better audio and Virtual Key Light for optimized lighting.</p>
+
+    <h3 class="mt-4 text-warning">Pricing and Availability</h3>
+    <ul>
+        <li class="text-white"><strong>GeForce RTX 5090</strong>: $1,999 (Jan. 30)</li>
+        <li class="text-white"><strong>GeForce RTX 5080</strong>: $999 (Jan. 30)</li>
+        <li class="text-white"><strong>GeForce RTX 5070 Ti</strong>: $749 (Feb.)</li>
+        <li class="text-white"><strong>GeForce RTX 5070</strong>: $549 (Feb.)</li>
+    </ul>
+    <p class="Article text-white">Laptops with RTX 50 Series GPUs will launch in March (<strong>RTX 5090/5080/5070 Ti</strong>) and April (<strong>RTX 5070</strong>), from brands like ASUS, Acer, Dell, Lenovo, Razer, and more.</p>
+
+    <h3 class="mt-4 text-warning">The Bottom Line</h3>
+    <p class="Article text-white">The GeForce RTX 50 Series represents the future of gaming and creative workflows, combining cutting-edge AI, unmatched performance, and revolutionary features. Whether you're a gamer, creator, or developer, NVIDIA's Blackwell-powered GPUs deliver groundbreaking performance and value, with the <strong>RTX 5070 offering high-end performance at a fraction of the cost of the RTX 4090</strong>.</p>
+
+    <p class="text-center mt-4"><a href="https://nvidia.com/en-us" class="btn btn-success" target="_blank">Visit NVIDIA for More Details</a></p>
+</div>
+
+{% endblock %}

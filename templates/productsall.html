@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}- My Product Store{% endblock %}
+
+{% block content %}
+<div class="products-container mt-4">
+
+    {% set model_asc_selected = 'selected' if sort == 'model_asc' else '' %}
+    {% set model_desc_selected = 'selected' if sort == 'model_desc' else '' %}
+    {% set price_asc_selected = 'selected' if sort == 'price_asc' else '' %}
+    {% set price_desc_selected = 'selected' if sort == 'price_desc' else '' %}
+
+    <form method="GET" action="{{ url_for('products', type=type) }}" class="mb-4 styled-forms">
+        <label class="form-label" for="sort">Sort by:</label>
+        <select class="form-select" name="sort" id="sort" onchange="this.form.submit()">
+            <option value="">Select...</option>
+            <option value="model_asc" {{ model_asc_selected }}>Model A-Z</option>
+            <option value="model_desc" {{ model_desc_selected }}>Model Z-A</option>
+            <option value="price_asc" {{ price_asc_selected }}>Price Low to High</option>
+            <option value="price_desc" {{ price_desc_selected }}>Price High to Low</option>
+        </select>
+    </form>
+
+    {% if products %}
+    <div class="products-container">
+        {% for product in products %}
+        <div class="Card">
+            <div class="Price">{{ product.price }}$</div>
+            <img
+                src="{{ url_for('static', filename='imgs/productimgs/' ~ product.image_url) }}"
+                alt="{{ product.model }}"
+            />
+            <h3>{{ product.brand }} {{ product.model }}</h3>
+            <br>
+            <br>
+            <a href="{{ url_for('product_detail', id=product.id) }}" class="more-info">MORE INFO</a>
+            {% if current_user.is_authenticated and current_user.role == 'admin' %}
+            <form
+                action="{{ url_for('delete_product', product_id=product.id) }}"
+                method="post"
+            >
+                <button
+                    class="btn bg-primary mt-2"
+                    type="submit"
+                    onclick="return confirm('Are you sure you want to delete this product?');"
+                >
+                    Delete
+                </button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No products found for this type.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Form{% endblock %}
+{% block content %}
+<h1 class="text-center">Add Product Specifications</h1>
+
+<form id="productForm" class="styled-form" method="POST" action="{{ url_for('add_product') }}">
+    {{ form.hidden_tag() }}
+
+    <label for="productType" class="form-label">Select Product Type:</label>
+    <select id="productType" class="form-select" name="type" onchange="toggleFields()">
+        <option value="">--Select Type--</option>
+        <option value="cpu">CPU</option>
+        <option value="gpu">GPU</option>
+        <option value="psu">PSU</option>
+        <option value="ram">RAM</option>
+        <option value="ssd">SSD</option>
+        <option value="case">Case</option>
+        <option value="motherboard">Motherboard</option>
+        <option value="build">Build</option>
+    </select>
+
+
+    <div id="buildFields" class="productFields hidden">
+        <h3 class="form-heading text-center">Build Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input") }}
+        {{ form.cpu.label(class="form-label") }} {{ form.cpu(class="form-input") }}
+        {{ form.gpu.label(class="form-label") }} {{ form.gpu(class="form-input") }}
+        {{ form.psu.label(class="form-label") }} {{ form.psu(class="form-input") }}
+        {{ form.mb.label(class="form-label") }} {{ form.mb(class="form-input") }}
+        {{ form.ram.label(class="form-label") }} {{ form.ram(class="form-input") }}
+        {{ form.ssd.label(class="form-label") }} {{ form.ssd(class="form-input") }}
+        {{ form.case.label(class="form-label") }} {{ form.case(class="form-input") }}
+    </div>
+
+
+    <div id="cpuFields" class="productFields hidden">
+        <h3 class="form-heading text-center">CPU Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input") }}
+        {{ form.cores.label(class="form-label") }} {{ form.cores(class="form-input") }}
+        {{ form.socket.label(class="form-label") }} {{ form.socket(class="form-input") }}
+        {{ form.threads.label(class="form-label") }} {{ form.threads(class="form-input") }}
+        {{ form.speed.label(class="form-label") }} {{ form.speed(class="form-input") }}
+        {{ form.tdp.label(class="form-label") }} {{ form.tdp(class="form-input") }}
+        {{ form.integrated_graphics.label(class="form-label") }} {{ form.integrated_graphics(class="form-checkbox") }}
+        {{ form.overclockable.label(class="form-label") }} {{ form.overclockable(class="form-checkbox") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input") }}
+    </div>
+
+
+    <div id="gpuFields" class="productFields hidden">
+        <h3 class="form-heading text-center">GPU Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input") }}
+        {{ form.vram.label(class="form-label") }} {{ form.vram(class="form-input") }}
+        {{ form.speed.label(class="form-label") }} {{ form.speed(class="form-input") }}
+        {{ form.interface.label(class="form-label") }} {{ form.interface(class="form-input") }}
+        {{ form.cooling_type.label(class="form-label") }} {{ form.cooling_type(class="form-input") }}
+        {{ form.power_consumption.label(class="form-label") }} {{ form.power_consumption(class="form-input") }}
+        {{ form.overclockable.label(class="form-label") }} {{ form.overclockable(class="form-checkbox") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input") }}
+    </div>
+
+
+    <div id="psuFields" class="productFields hidden">
+        <h3 class="form-heading text-center">PSU Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input") }}
+        {{ form.wattage.label(class="form-label") }} {{ form.wattage(class="form-input") }}
+        {{ form.efficiency.label(class="form-label") }} {{ form.efficiency(class="form-input") }}
+        {{ form.modularity.label(class="form-label") }} {{ form.modularity(class="form-input") }}
+        {{ form.connector_types.label(class="form-label") }} {{ form.connector_types(class="form-input") }}
+        {{ form.fan_size.label(class="form-label") }} {{ form.fan_size(class="form-input") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input") }}
+    </div>
+
+
+    <div id="ramFields" class="productFields hidden">
+        <h3 class="form-heading text-center">RAM Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input") }}
+        {{ form.capacity.label(class="form-label") }} {{ form.capacity(class="form-input") }}
+        {{ form.ram_type.label(class="form-label") }} {{ form.ram_type(class="form-input") }}
+        {{ form.speed.label(class="form-label") }} {{ form.speed(class="form-input") }}
+        {{ form.ecc_support.label(class="form-label") }} {{ form.ecc_support(class="form-checkbox") }}
+        {{ form.heat_spreader.label(class="form-label") }} {{ form.heat_spreader(class="form-checkbox") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input") }}
+    </div>
+    <div id="motherboardFields" class="productFields hidden">
+        <h3 class="form-heading text-center">Motherboard Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input", id="mbBrand") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input", id="mbModel") }}
+        {{ form.socket.label(class="form-label") }} {{ form.socket(class="form-input", id="mbSocket") }}
+        {{ form.chipset.label(class="form-label") }} {{ form.chipset(class="form-input", id="mbChipset") }}
+        {{ form.ram_slots.label(class="form-label") }} {{ form.ram_slots(class="form-input", id="mbRamSlots") }}
+        {{form.ram_type.label(class="form-label")}} {{form.ram_type(class="form-input", id="ramRamType")}}
+        {{ form.max_ram_capacity.label(class="form-label") }} {{ form.max_ram_capacity(class="form-input", id="mbMaxRamCapacity") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input", id="mbPrice") }}
+    </div>
+    
+    <div id="ssdFields" class="productFields hidden">
+        <h3 class="form-heading text-center">SSD Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input", id="ssdBrand") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input", id="ssdModel") }}
+        {{ form.capacity.label(class="form-label") }} {{ form.capacity(class="form-input", id="ssdCapacity") }}
+        {{ form.read_speed.label(class="form-label") }} {{ form.read_speed(class="form-input", id="ssdReadSpeed") }}
+        {{ form.write_speed.label(class="form-label") }} {{ form.write_speed(class="form-input", id="ssdWriteSpeed") }}
+        {{ form.form_factor.label(class="form-label") }} {{ form.form_factor(class="form-input", id="ssdFormFactor") }}
+        {{ form.interface.label(class="form-label") }} {{ form.interface(class="form-input", id="ssdInterface") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input", id="ssdPrice") }}
+    </div>
+    
+    <div id="caseFields" class="productFields hidden">
+        <h3 class="form-heading text-center">Case Specifications</h3>
+        {{ form.brand.label(class="form-label") }} {{ form.brand(class="form-input", id="caseBrand") }}
+        {{ form.model.label(class="form-label") }} {{ form.model(class="form-input", id="caseModel") }}
+        {{ form.case_type.label(class="form-label") }} {{ form.case_type(class="form-input", id="caseCaseType") }}
+        {{ form.interface.label(class="form-label") }} {{ form.interface(class="form-input", id="caseInterface") }}
+        {{ form.material.label(class="form-label") }} {{ form.material(class="form-input", id="caseMaterial") }}
+        {{ form.color.label(class="form-label") }} {{ form.color(class="form-input", id="caseColor") }}
+        {{ form.motherboard_type.label(class="form-label") }} {{ form.motherboard_type(class="form-input", id="caseMotherboardType") }}
+        {{ form.price.label(class="form-label") }} {{ form.price(class="form-input", id="casePrice") }}
+    </div>
+
+    <div>
+        {{ form.release_date.label(class="form-label") }} {{ form.release_date(class="form-input") }}
+        {{ form.image_url.label(class="form-label") }} {{ form.image_url(class="form-input") }}
+    </div>
+
+
+    <input class="btn styled-btn" type="submit" value="Submit">
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }} mt-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</form>
+
+<script>
+    function toggleFields() {
+        const allFields = document.querySelectorAll('.productFields');
+
+        allFields.forEach(field => {
+            field.classList.add('hidden');
+            const inputs = field.querySelectorAll('input, select');
+            inputs.forEach(input => input.disabled = true);
+        });
+
+        // Show selected type fields
+        const productType = document.getElementById('productType').value;
+        if (productType) {
+            const selectedFields = document.getElementById(productType + 'Fields');
+            if (selectedFields) {
+                selectedFields.classList.remove('hidden');
+                const inputs = selectedFields.querySelectorAll('input, select');
+                inputs.forEach(input => input.disabled = false);
+            }
+        }
+    }
+</script>
+{% endblock %}

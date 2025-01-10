@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} {{product.brand}} - Detail {% endblock %}
+{% block content %}
+<div class="container mt-5 crad">
+    <h1 class="text-center">{{ product.model }}</h1>
+
+    <div class="crad mt-4 mb-4">
+        <div class="card-header text-center">
+            <h4>Specifications</h4>
+            <img src="{{ url_for('static', filename='imgs/productimgs/' ~ product.image_url) }}" class="product-image" alt="">
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Brand:</strong> {{ product.brand }}</li>
+                <li class="list-group-item"><strong>Model:</strong> {{ product.model }}</li>
+                <li class="list-group-item"><strong>CPU:</strong> {{ product.cpu }} </li>
+                <li class="list-group-item"><strong>GPU:</strong> {{ product.gpu }} </li>
+                <li class="list-group-item"><strong>MotherBoard:</strong> {{ product.mb }}</li>
+                <li class="list-group-item"><strong>RAM:</strong> {{ product.ram}} </li>
+                <li class="list-group-item"><strong>SSD:</strong> {{ product.ssd}} </li>
+                <li class="list-group-item"><strong>Power Supply</strong> {{ product.psu}} </li>
+                <li class="list-group-item"><strong>Case:</strong> {{ product.case}} </li>
+                <li class="list-group-item"><strong>Price:</strong> ${{ "%.2f"|format(product.price) }}</li>
+            </ul>
+        </div>
+    </div>
+    <a href="/products/{{product.type}}" class="btn btn-styled cs rounded">Back</a>
+</div>
+{% endblock %}

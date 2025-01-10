@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg rounded custom-navbar" style="background-color: #000000;">
+    <div class="container-fluid">
+        <h1 class="navbar-brand text-warning">OPShop</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color: yellow;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="/product">Parts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning" href="/products/">All Products</a>
+                </li>
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-warning" href="#" id="dropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Choose
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="/products/cpu">CPU</a></li>
+                        <li><a class="dropdown-item" href="/products/gpu">GPU</a></li>
+                        <li><a class="dropdown-item" href="/products/psu">PSU</a></li>
+                        <li><a class="dropdown-item" href="/products/ram">RAM</a></li>
+                        <li><a class="dropdown-item" href="/products/ssd">SSD</a></li>
+                        <li><a class="dropdown-item" href="/products/build">Builds</a></li>
+                        <li><a class="dropdown-item" href="/products/motherboard">Motherboard</a></li>
+                        <li><a class="dropdown-item" href="/products/case">Case</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Auth Links -->
+            <div class="ms-auto">
+                {% if current_user.is_authenticated %}
+                <div class="status-circle" id="statusCircle" style="background-color: green;" onclick="window.location.href='/logout'"></div>
+                {% else %}
+                <a href="{{ url_for('login') }}" class="auth-link text-warning me-2">Login</a>
+                <a href="{{ url_for('register') }}" class="auth-link text-warning">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
